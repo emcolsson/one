@@ -1,0 +1,474 @@
+@charset "utf-8";
+/* Project Meta 
+Author: Emanuel Olsson
+Author URI: http:/www.emcolsson.se
+Date: 01/03/07 
+Description: Stylesheet for custom portfolio theme in WordPress
+Email: emc.olsson@gmail.com
+Theme Name: emcolsson
+Tags: custom-header, custom-menu, custom-logo
+Version: 0.0.1
+
+*/
+
+
+/**********************************************************************************	
+								Global settings
+**********************************************************************************/
+
+* {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+a {
+	text-decoration: none;
+}
+a:hover,
+a:focus {
+	text-decoration: underline;
+}
+body {
+	color: #333333;
+	font-size: 14px;
+	height: 100vh;
+	margin: 0 auto;	
+	padding: 0;
+	overflow-x: hidden;
+}
+html {
+	font-size: 137.5%;
+	height: 100vh;
+	margin: 0 auto;
+	/* fix for screen jumping left when vertical scrollbar is added due to long page */
+	overflow-y: scroll;
+	padding: 0;
+	-webkit-font-smoothing: antialiased;
+	overflow-x: hidden;
+}
+img, iframe, object, embed, video {
+    width: 100%;
+    max-width: 100%;
+	height: auto;
+}
+.img-responsive {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+
+
+/**********************************************************************************	
+								  Typography
+**********************************************************************************/
+
+.font-weight-normal {
+	font-weight: normal;
+}
+@font-face {
+	font-family: helvetica;
+	src: url(../fonts/HelveticaLTStd-Roman.otf) format(opentype);
+}
+@font-face {
+	font-family: helvetica-bold;
+	src: url(../fonts/HelveticaLTStd-Bold.otf) format(opentype);
+	font-weight: 900;
+}
+
+
+/**********************************************************************************	
+									Header
+**********************************************************************************/
+
+#site-header {
+	align-items: center;
+	display: flex;
+	height: 21.14583333%;
+	min-height: 21.14583333%;
+	justify-content: center;
+	width: 100%;
+}
+#site-header {
+	width: 100%;	
+}
+
+
+/**********************************************************************************	
+					     Wrapper & content-container
+**********************************************************************************/
+
+.content-container {
+	display: flex;
+	flex-direction: column;
+	font-family: helvetica, "Helvetica LT Std Light", sans-serif;
+	width: 100%;
+}
+.wrapper {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	max-width: 100%; /* added*/
+	min-height: 62.437500004%;
+	height: 62.437500004%;
+	width: 100%;
+}
+
+
+/**********************************************************************************	
+								 	Footer
+**********************************************************************************/
+
+footer {
+	align-items: center;
+	background-color: #000;
+	display: flex;
+	font-family: Verdana, Helvetica, sans-serif;
+	height: 16.416666666%;
+	min-height: 16.416666666%;
+	text-align: center;
+	width: 100%;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+footer img { 
+	display: inline-block;
+	height: auto;
+	max-width: 100%;
+	margin: 1%;	
+	vertical-align: middle;
+	width: 8%; /* if set to percent they will not fall out of div, but be too small, fix width media query */
+}
+.footerrow1, 
+.footerrow2, 
+.footerrow3 {
+	width: 100%;
+}
+.footerrow1 {
+	order: 2;
+}
+.footerrow2 {
+	order: 1;
+}
+.footerrow3 {
+	order: 0;
+}
+.footerrow1 p{
+	color: #999;
+	font-size: 0.75em;
+	margin: 1%
+}
+.footerrow3 {
+	text-transform: uppercase;
+}
+.footerrow3 p{
+	color: #666;
+	font-size: 0.73em;
+	margin: 1.8%;
+}
+
+
+/**********************************************************************************	
+									Menu
+**********************************************************************************/
+
+.menu-container {
+	margin: 3.8% 10px 0px 10px
+}
+
+/* Centering menu-items horizontally and vertically */
+.menu {
+	display: flex;   
+	padding: 0; 
+}
+/* Formats the menu-images so they have a black border with white outline and rounded corners */
+.menu img {
+	-webkit-border-radius: 15px;
+	border: 1px solid #ccc;
+	border-radius: 15px;
+	height: auto;	
+	margin: 0 auto;
+	max-width: 100%;
+	padding: 5%;
+	width: 91%;
+	display: flex;
+}
+/* Creates background hover effects on menu images */
+.menu img:hover, 
+.menu img:active,
+.menu current-menu-item img {
+	background-color: #fa3030;
+}
+/* Removes bullets/dots for list-items */
+.menu li {
+	list-style: none;	
+}
+
+
+/**********************************************************************************	
+									Collapse panel
+**********************************************************************************/
+ 
+/* Smoothens the animation of collapse  */
+.collapsing {
+	height: 0;
+	overflow: hidden;
+	position: relative;
+	transition-duration: 0.35s;
+	transition-timing-function: ease;
+	transition-property: height, visibility;
+	-moz-transition-duration: 0.35s;
+	-moz-transition-property: height, visibility;
+	-moz-transition-timing-function: ease;
+	-o-transition-duration: 0.35s;
+	-o-transition-property: height, visibility;
+	-o-transition-timing-function: ease;
+	-webkit-transition-duration: 0.35s;
+	-webkit-transition-property: height, visibility;
+	-webkit-transition-timing-function: ease;
+}
+/* fix for sketchy animation when no paragraph is entered after subtitle */
+#collapse5 .panel-body {
+	margin-bottom: 1%;
+}
+/* Sets panels to not collapsed as default  */
+.collapse {
+	display: none;
+}
+/* Keeps panels collapsed when clicked */
+.collapse.in {
+	display: block;
+}
+/* positioning for download image-link */
+.download {
+	position: relative;
+	width: 30%;
+}
+.download img {
+	bottom: 2px;
+	left: 235%;
+	padding: 5px;
+	position: absolute;	
+	width: 90px;
+}
+/* for separating sections */
+hr {
+	border-top: 1px solid #8c8b8b;
+	margin-bottom: 1em;
+}
+/* Styles and spaces the content-body of each panel to white and with rounded corners  */
+.panel {
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); 
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+	background-color: #fff;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+	margin-bottom: 2%;
+	
+}
+/* Pads the white content-body of each panel */
+.panel-body {
+	padding: 15px;
+}
+.panel-date {
+	font-weight: 900;
+	text-align: right;	
+}
+/* Sets paneltop-color */
+.panel-default>.panel-heading {
+	background-color: #f42e2e; 
+}
+.panel-group {
+	margin: 0 auto;
+	margin-bottom: 20px;
+	width: 40%;
+}
+/* Reduces the space between panels. Creates white bottom of each panel and making them look like tabs.  */
+.panel-group .panel {
+	margin-bottom: 0;
+	padding-bottom: 10px;
+}
+/* Creates space between panel-sections */
+.panel-group .panel + .panel {
+	margin-top: 5px;
+}
+/* Creates a background fot the panel headings with round corners  */
+.panel-heading {
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	padding: 10px 15px;
+}
+.panel-subheading {
+	margin: 1% 0 1% 0; 
+}
+.panel-subtitle {
+	float: left;
+	font-weight: 900;		
+}
+.panel-subtitle-sub {
+	float: left;	
+	margin-top: 0.267858%;
+}
+.panel-subtitle-without-float {
+	font-weight: 900;
+}
+/* Slimming space around title and makes the headers of panels shorter in height  */
+.panel-title {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+/* Changing default blue link color to bodys #333333  */
+.panel-title > a {
+	color: inherit;
+}
+.panel-title {
+	font-size: 16px;
+	font-weight: 900;
+	line-height: 1.1;
+	text-transform: uppercase;
+}
+#positioner {
+	width: 30%;
+}
+
+
+/**********************************************************************************	
+									Contact Form
+**********************************************************************************/
+
+.contact-form {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;	
+}
+.contact-input {
+	margin: 0.8%;	
+}
+.contact-input input {
+	background-position: 15px center;
+	background-repeat: no-repeat;
+	background-size: 10%;
+	border: 1px solid #dfe2e2;
+	border-color: #fff;
+	border-radius: 3px;
+	border-style: solid;
+	box-shadow: none;
+	color: #603;
+	font-size: 16px;
+	padding: 24px;
+	padding-left: 52px;
+}
+.contact-input #mail {
+	background-image: url(../images/icons/contact_mail_icon.svg);	
+}
+.contact-input #name {
+	background-image: url(../images/icons/contact_name_icon.svg);
+}
+.contact-input span {
+	float: left;
+	padding: 24px;
+	text-align: right;
+	width: 75%;
+}
+.contact-input textarea {
+	background-image: url(../images/icons/contact_message_icon.svg);
+	background-position: 15px 17%; 
+	background-repeat: no-repeat;
+	background-size: 5.5%;
+	border: 1px solid #dfe2e2;
+	border-color: #fff;
+	border-radius: 3px;
+	border-style: solid;
+	box-shadow: none;
+	color: #603;
+	font-family: helvetica, "Helvetica LT Std Light", sans-serif;
+	font-size: 16px;
+	height: 150px;
+	padding: 24px;
+	padding-left: 52px;
+	width: 100%;
+}
+.contact-input #submitButton {
+	float: right;
+	font-size: 18px;
+	font-weight: 600;
+	padding: 3.5%;
+	text-transform: uppercase;
+	width: 25%;
+}
+#inner-editor {
+	color: #C00;	
+}
+/* success/ fail jquery text */
+.status {
+	color: #fa3030;
+}
+.upper-form {
+	display: flex;
+}
+.upper-form input {
+	width: 100%;
+}
+/* Sets placeholder text to certain grey and lesser opacity when focused */
+::-webkit-input-placeholder, ::-webkit-textarea-placeholder {
+	opacity: 1;
+}
+input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder {
+	opacity: 0.45;
+}
+::-webkit-input-placeholder {
+	color: #797979;
+}
+:-moz-placeholder {
+	color: #797979;
+}
+::-moz-placeholder {
+	color: #797979;
+}
+:-ms-input-placeholder {
+	color: #797979;
+}
+/* Firefox 18- */
+:-moz-placeholder { 
+	opacity: 1;
+}
+input:focus:-moz-placeholder {
+	opacity: 0.45;
+}
+/* Firefox 19+ */
+::-moz-placeholder {  
+	opacity: 1;
+}
+input:focus::-moz-placeholder {
+	opacity: 0.45;
+}
+/* Internet Explorer 10 */
+:-ms-input-placeholder {  
+	opacity: 1;
+}
+input:focus:-ms-input-placeholder {
+	opacity: 0.45;
+}
+/* fix for Chrome autocomplete yellow background */
+input:-webkit-autofill {
+	-moz-box-shadow: 0 0 0 1000px white inset !important;
+	-webkit-box-shadow: 0 0 0 1000px white inset !important;
+	box-shadow: 0 0 0 1000px white inset !important;
+}
+#form-response h2 {
+	color: #fa3030;
+	margin: 0;
+	text-align: center;
+}
+#form-response {
+	margin: 1% 1%;
+	height: 24px;
+}
+.bulletlist li {
+	list-style: none;
+}
+
+
+/**********************************************************************************	
+									Media queries
+**********************************************************************************/
